@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://cuhrjayndipt5"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_8ts5c"]
+[ext_resource type="ArrayMesh" uid="uid://bqgid2ibpj23v" path="res://Assets/warbike/bike.obj" id="1_x4x7v"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_afokm"]
+radius = 0.131
+height = 1.9
+
+[node name="Player" type="CharacterBody3D"]
+up_direction = Vector3(0, 0, 1)
+floor_stop_on_slope = false
+floor_constant_speed = true
+script = ExtResource("1_8ts5c")
+SPEED = 15.825
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_x4x7v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.3, 0.05)
+shape = SubResource("CapsuleShape3D_afokm")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, -0.620947)
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 4.37114e-08, -7.57103e-08, 0, 0.866025, 0.5, 8.74228e-08, 0.5, -0.866025, 0, 2.33856, -1.53132)
+fov = 90.0

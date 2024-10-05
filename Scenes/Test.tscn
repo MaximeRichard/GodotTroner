@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://blriydmc5devw"]
+
+[ext_resource type="PackedScene" uid="uid://cuhrjayndipt5" path="res://Scenes/player.tscn" id="1_15agb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eplyr"]
+albedo_color = Color(0.0823529, 0.235294, 0.313726, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3vo3x"]
+material = SubResource("StandardMaterial3D_eplyr")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_10jxp"]
+size = Vector3(100, 0.5, 100)
+
+[node name="Test" type="Node"]
+
+[node name="Floor" type="RigidBody3D" parent="."]
+freeze = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(100, 0, 0, 0, 0.5, 0, 0, 0, 100, 0, 0, 0)
+mesh = SubResource("BoxMesh_3vo3x")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_10jxp")
+
+[node name="Player" parent="." instance=ExtResource("1_15agb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.237558, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0384401, 0.999261, 0, -0.999261, -0.0384401, 0, 23.3013, 0)
+light_energy = 3.438
